@@ -1,0 +1,82 @@
+ <html>
+    <head>
+        <title>Guessing Game!!</title>
+        <style>
+            body{
+                text-align: center;
+                background-image: url('https://www.shutterstock.com/image-photo/guess-word-cube-on-wood-260nw-2038782485.jpg');
+                background-repeat: no-repeat;
+                background-size:85rem;
+                background-position:center;
+            }
+            h1{
+                font-size:2em;
+                margin-top:50px;
+              color:red;
+            }
+            #gin{
+                font-size:15px;
+                width: 120px;
+                height:50px;
+            }
+             button{
+                font-size: 1.5em;
+                margin-top:10px;
+                border:5 px solid green;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Guess Number Between 1 to 100</h1>
+        <form>
+            <input type="number" id="gin">
+            <button type="button" onclick="guess()">Guess</button>
+          </form>
+          <p id="res"></p>
+          <p >Remaining Attempts:<span id="rema"></span></p>
+        </form>
+    <script>
+         const rno=parseInt(Math.floor(Math.random()*100)+1);
+         var ra=5;
+        function guess(){
+            var guess=document.getElementById("gin").value;
+               if(guess<1 || guess>100){
+                     document.getElementById("res").innerHTML="Range is between 1 to 100";
+                        }
+               if(guess<rno){
+                    document.getElementById("res").innerHTML="Guess high no";
+                    ra--;
+                    if(ra>0){
+                        //document.getElementById("res").innerHTML="Guess high no";
+                        gin.value="";   
+                    }
+                    else{
+                        document.getElementById("res").innerHTML="Out of attempts";
+                        gin.disabled=true;
+                    }
+                }
+                else if(guess>rno){
+                    document.getElementById("res").innerHTML="Guess low no";
+                    ra--;
+                    if(ra>0){
+                        //document.getElementById("res").innerHTML="Guess low no";
+                        gin.value="";
+                    }else{
+                        document.getElementById("res").innerHTML="Out of attempts";
+                        gin.disabled=true;
+                    }
+                }
+                else if(guess==rno){
+                    document.getElementById("res").innerHTML="Congratulations";
+                    gin.disabled=true;
+                }
+            if(ra==0){
+                 document.getElementById("res").innerHTML="Out of attempts";
+                 gin.disabled=true;
+              }
+               document.getElementById("rema").innerHTML=ra;
+        }
+    </script>
+    </body>
+</html>
+

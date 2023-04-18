@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="StyleSheet" href="styles.css">
+    </head>
+<body class="tp">
+  <div id="dt"></div>
+    <img src="photo.jpg" align="left" height="150" weight="200" >
+      <h1 class="top">ANITS</h1>
+      <h2>Anil Neerukonda Institute of Technology & Sciences (Autonomous)</h2>
+      <marquee width="100%" direction="left" height="100px">
+  (Permanent Affiliation by Andhra University & Approved by AICTE
+  Accredited by NBA (ECE, EEE, CSE, IT, Mech. Civil & Chemical) & NAAC)</marquee>
+<script>                                                                          
+  function updateTime(){
+    var x=document.getElementById('dt');
+    var now=new Date();
+    x.innerHTML=now.toLocaleString();
+  }
+  setInterval(updateTime,1000);
+</script>
+</body>
+</html>

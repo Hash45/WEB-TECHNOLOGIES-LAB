@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <title>Snake Game</title>
+        <style>
+            body{
+                background-image: url('https://cdn.wallpapersafari.com/66/44/zldaLS.jpg');
+                background-repeat: no-repeat;
+                background-size:1200px 650px;
+            }
+            h1{
+                /* margin-top:110px; */
+                /* margin-bottom:60px; */
+                margin-left:10px;
+                color:crimson;
+                text-align: center;
+                font-weight:bolder;
+                font-size:50px;
+                block-size: auto;
+            }
+            canvas {
+                margin-left:300px;
+                /* margin-top:250px; */
+                background-position:"center";
+                border: 10px solid green;
+                background-image: url('https://img.freepik.com/free-photo/beige-aged-background_53876-90777.jpg?w=360');
+                background-repeat: no-repeat;
+                background-size:450px 450px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Snake Game</h1>
+        <canvas id="gc" width="450" height="450"></canvas>
+        <script >
+            var canvas = document.getElementById("gc");
+            var ctx = canvas.getContext("2d");
+            var tileSize = 10;
+            var snake = [{x: 2, y: 2}];
+            var direction = "right";
+            var food = {x: Math.floor(Math.random() * canvas.width / tileSize),
+                        y: Math.floor(Math.random() * canvas.height / tileSize)};
+            var score = 0;
+            var gameLoop;
+            document.addEventListener("keydown", function(event) {
+                switch(event.keyCode) {
+                    case 37:
+                        if (direction !== "right") {
+                            direction = "left";
+                        }
+                        break;
+                    case 38:
+                        if (direction !== "down") {
+                            direction = "up";
+                        }
+                        break;
+                    case 39: 
+                        if (direction !== "left") {
+                            direction = "right";
+                        }
+                        break;
+                    case 40: 
+                        if (direction !== "up") {
+                            direction = "down";
+                        }
+                        break;
+                }
+            });
+            
+            gameLoop = setInterval(updateGame, 100);
+            
+            function updateGame() {
+                var head = {x: snake[0].x, y: snake[0].y};
+                switch(direction) {
+                    case "left":
+                        head.x -= 1;
+                        break;
+                    case "up":
+                        head.y -= 1;
+                        break;
+                    case "right":
+                        head.x += 1;
+                        break;
+                    case "down":
+                        head.y += 1;
+                        break;
+                }
+                snake.unshift(head);
+                if (head.x === food.x && head.y === food.y) {
+                    score += 10;
+                    food = {x: Math.floor(Math.random() * canvas.width / tileSize),
+                            y: Math.floor(Math.random() * canvas.height / tileSize)};
+                } else {
+                    snake.pop();
+                }
+                if (head.x < 0 || head.x >= canvas.width / tileSize ||
+                    head.y < 0 || head.y >= canvas.height / tileSize ){
+                    // snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)) {
+                    clearInterval(gameLoop);
+                    alert("Game over! Score: " + score);
+                }
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "black";
+                snake.forEach(segment => {
+                    ctx.fillRect(segment.x * tileSize, segment.y * tileSize, tileSize, tileSize);
+                });
+                ctx.fillStyle = "red";
+                ctx.fillRect(food.x * tileSize, food.y * tileSize, tileSize, tileSize);
+                
+                document.getElementById("score").textContent = "Score: " + score;
+            }</script>
+    </body>
+</html>

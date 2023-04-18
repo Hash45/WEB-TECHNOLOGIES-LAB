@@ -1,0 +1,80 @@
+<html>
+  <head>
+      <title>Forms</title>
+      <link rel="StyleSheet" href="styles.css">
+  </head>
+  <body>
+     <h1 onclick="f()">Registration Form</h1>
+     <form name="f1" action="abc.php" method="post" onsubmit="return func()">
+     <table>
+      <tr><td class="heading">Name:</td>
+        <td><input name="nm" type="text" placeholder="Enter ur name"></td>
+      </tr>
+      <tr><td class="heading">Last Name:</td>
+          <td><input name="lname" type="text" placeholder="Enter ur name"></td>
+        </tr>
+        <tr><td class="heading">Education:</td>
+          <td><select name="edu" class="edu">
+              1:<option>B-Tech</option>
+              2:<option>BCom</option>
+              3:<option>Doctor</option>
+             </select></td>
+        </tr>
+        <tr><td class="heading">Email:</td>
+          <td><input name="em" type="email"></td>
+        </tr>
+        <tr><td class="heading">Password:</td>
+          <td><input name="pass" type="password"></td>
+        </tr>
+        <tr><td class="heading" >DOB:</td>
+          <td><input name="da" type="date"></td>
+        </tr>
+        <tr><td class="heading">Gender:</td>
+          <td><input class="gen" type="radio" name="gen" value="Male">Male</td>
+          <td><input class="gen" type="radio" name="gen" value="Female">Female</td>
+        </tr>
+        <tr><td class="heading">Languages:</td>
+          <td><input class="gen"type="checkbox" name="lan" value="Telugu">Telugu</td>
+          <td><input class="gen"type="checkbox" name="lan" value="Hindi">Hindi</td>
+          <td><input class="gen"type="checkbox" name="lan" value="English">English</td>
+        </tr>
+        <tr><td class="heading">Comment:</td>
+          <td><textarea name="comm" width="20" height="50"></textarea></td>
+        </tr>
+        <tr><td class="heading">Resume:</td>
+          <td><input name="res" class="file" type="file" required="required"></td>
+        </tr>
+        <tr > 
+          <td class="heading">Submit:</td>
+          <td ><input class="sub" type="submit" value="Submit"></td>
+         <td class="heading">Reset:</td>
+          <td><input  class="sub" type="reset"></td>
+        </tr>
+        </table></form>
+        <script>
+          function f(){
+  document.querySelector("h1").style.color="blue";
+}
+function func(){
+ if( document.f1.nm.value ==""){
+  alert("name cannot be empty");
+  document.f1.nm.focus();
+  return false;
+ }
+else if(document.f1.edu.value ==""){
+  alert("edu cannot be empty");
+  document.f1.edu.focus();
+  return false;
+ }
+ else if(document.f1.pass.value  ==""){
+  alert("pass cannot be empty");
+  document.f1.pass.focus();
+  return false;
+ }else{
+  alert("form submitted");
+  return true;
+ }
+}
+       </script> 
+  </body>
+</html>

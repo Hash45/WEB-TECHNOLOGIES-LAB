@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <link rel="StyleSheet" href="styles.css">
+  </head>
+  <body class="left">
+  <h2>Contents</h2>
+  <ol class="lis">
+      <a href="listinfo.html" target="right"><li>College Details</li>
+      <a href="timetable.html" target="right"><li>Time Tables</li>      
+      <a href="forms.html" target="right"><li>Registration Form</li>
+        <li>
+          <a id="js" target="right" href="#">Java Script
+          <select id="opt">
+            <option value="None">None</option>
+            <option value="guessgame">Guess-game</option>
+            <option value="snake">Snake-game</option>
+            <option value="billgener">Bill Generation</option>
+          </select>
+        </li>
+        <script>
+          const o=document.getElementById("opt");
+          o.addEventListener("change",function()
+          {
+            if(o.value=="guessgame"){
+              parent.right.location.href="guessing-game.html";
+            }
+            else if(o.value=="snake"){
+              parent.right.location.href="snake.html";
+            }
+            else if(o.value=="billgener"){
+              parent.right.location.href="billgener.html";
+            }
+          });
+        </script>
+  </ol>
+</body>
+</html>
