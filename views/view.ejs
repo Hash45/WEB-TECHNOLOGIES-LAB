@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <style>
+            body {
+                
+                font-family: Arial, sans-serif;
+            }
+            table {
+                text-align: center;
+                width: 90%;
+                margin: 20px auto;
+                border-collapse: collapse;
+            }
+            th {
+                background-color: #0066cc;
+                color: #ffffff;
+                padding: 10px;
+                font-size: 18px;
+                border: 1px solid #ddd;
+            }
+            td {
+                padding: 8px;
+                font-size: 16px;
+                border: 1px solid #ddd;
+            }
+            .lunch-break {
+        background-color: #0066cc;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
+        vertical-align: middle;
+      }
+      
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+<body>
+<div class="container">
+    <h1 align="center">Timetable </h1>
+    <h1 align="center"> Year:<%= year %> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSection:<%= section %></h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>08:40 - 09:30</th>
+          <th>09:30 - 10:20</th>
+          <th>10:20 - 11:10</th>
+          <th>11:10 - 12:00</th>
+          <th>12:00 - 12:50</th>
+          <th>12:50 - 01:40</th>
+          <th>01:40 - 02:30</th>
+          <th>02:30 - 03:20</th>
+          <th>03:20 - 04:10</th>
+        </tr>
+      </thead>
+      <tbody> 
+        
+        <% let showLunchBreak = true; %>
+        <% timetable.forEach(row =>{ %>
+            <% let showP = Array(8).fill(true); %>
+        <tr>
+            <td><%= row.Day %></td>
+            <% if (showP[0]) { %>
+            <% let sp=1; %>
+            <% let i=1; %>
+            <% let j=2; %>
+            <% while(row[`P`+i]==row[`P`+j] && j<=4){
+                showP[j-1]=false;
+                i++;
+                j++;
+                sp++;
+            } %>
+            <td colspan="<%= sp %>"><%= row.P1 %></td>
+            <% } %>
+            <% if (showP[1]) { %>
+            <%  sp=1; %>
+            <%  i=2; %>
+            <%  j=3; %>
+            <% while(row[`P`+i]==row[`P`+j] && j<=4){
+                showP[j-1]=false;
+                i++;
+                j++;
+                sp++;
+            } %>
+            <td colspan="<%= sp %>"><%= row.P2 %></td>
+            <% } %>
+            <% if (showP[2]) { %>
+            <%  sp=1; %>
+            <%  i=3; %>
+            <%  j=4; %>
+            <% while(row[`P`+i]==row[`P`+j] && j<=4){
+                showP[j-1]=false;
+                i++;
+                j++;
+                sp++;
+            } %>
+            <td colspan="<%= sp %>"><%= row.P3 %></td>
+            <% } %>
+            <% if (showP[3]) { %>
+            <td><%= row.P4 %></td>
+            <% } %>
+            <% if (showLunchBreak) { %>
+              <td class="lunch-break" rowspan="6">L<br>U<br>N<br>C<br>H<br> <br>B<br>R<br>E<br>A<br>K</td>
+              <% showLunchBreak = false; %>
+            <% } %>
+            <% if (showP[4]) { %>
+            <% sp=1; %>
+            <% i=5; %>
+            <% j=6; %>
+            <% while(row[`P`+i]==row[`P`+j] && j<=8){
+                showP[j-1]=false;
+                i++;
+                j++;
+                sp++;
+            } %>
+            <td colspan="<%= sp %>"><%= row.P5 %></td>
+            <% } %>
+            <% if (showP[5]) { %>
+                <% sp=1; %>
+                <% i=6; %>
+                <% j=7; %>
+                <% while(row[`P`+i]==row[`P`+j] && j<=8){
+                    showP[j-1]=false;
+                    i++;
+                    j++;
+                    sp++;
+                } %>
+                <td colspan="<%= sp %>"><%= row.P6 %></td>
+                <% } %>
+                <% if (showP[6]) { %>
+                    <% sp=1; %>
+                    <% i=7; %>
+                    <% j=8; %>
+                    <% while(row[`P`+i]==row[`P`+j] && j<=8){
+                        showP[j-1]=false;
+                        i++;
+                        j++;
+                        sp++;
+                    } %>
+                    <td colspan="<%= sp %>"><%= row.P7 %></td>
+                    <% } %>
+                    <% if (showP[7]) { %>
+                        <td><%= row.P8 %></td>
+                        <% } %>
+                    </tr>
+                    <% }); %>
+            </tbody>
+      
+    </table>
+  </div>
+  
+</body></html>
