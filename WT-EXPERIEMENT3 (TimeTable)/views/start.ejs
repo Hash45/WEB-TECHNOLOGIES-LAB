@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style> 
+         body {
+            background: url("https://tse3.mm.bing.net/th?id=OIP.1VEsjGzAmUUNpyiPbcZZIwHaEo&pid=Api&P=0");
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 150px;
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        form {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            width: 250px;
+            height: 200px;
+            text-align: center;
+            border: none;
+            display: inline-block;
+            border-radius: 20px;
+            background-color: black;
+            color: midnightblue;
+            font-size: 24px;
+            margin: 20px 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #005ea3;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+        img {
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login As</h2>
+    <form name="form" action="/start" method="post">
+        <button name="admin" value="admin">
+            <img src="https://thumbs.dreamstime.com/b/admin-sign-laptop-icon-stock-vector-166205404.jpg" alt="Admin" style="width: 100%; height: 100%;">
+            <br>Admin
+        </button>
+
+        <button name="teacher" value="teacher">
+            <img src="https://cdn.vectorstock.com/i/preview-1x/17/61/teacher-and-student-in-a-class-vector-45871761.jpg" alt="Teacher" style="width: 100%; height: 100%;">
+            <br>Teacher
+        </button>
+
+        <button name="student" value="student">
+            <img src="https://static.vecteezy.com/system/resources/previews/000/512/866/original/vector-student-glyph-black-icon.jpg" alt="Student" style="width: 100%; height: 100%;">
+            <br>Student
+        </button>
+
+                </div>
+              </div>
+        </form>
+    </body>
+    
+</html>
